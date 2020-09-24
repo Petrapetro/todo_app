@@ -21,10 +21,7 @@ public class Task2Application implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        todoService.addTodo("feed the cats", true, false);
-        todoService.addTodo("wash dishes", false, true);
-        todoService.addTodo("make the beds", true, false);
-        todoService.addTodo("do homework", false, true);
+
         System.out.println(todoService.getTodos().stream().toString());
     }
 }
