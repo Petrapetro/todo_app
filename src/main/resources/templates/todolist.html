@@ -13,7 +13,7 @@
 <div>
     <div class="row">
     <div class="col-1">ID</div>
-    <div class="col-1">ACTION</div>
+    <div class="col-3">ACTION</div>
     <div class="col-1">IS IT DONE</div>
     <div class="col-1">IS IT URGENT</div>
     <div class="col-1">DELETE</div>
@@ -21,7 +21,7 @@
     </div>
     <div class="row" th:each="todo : ${todos}">
         <div class="col-1" th:text="${todo.id}"></div>
-        <div class="col-1" th:text="${todo.title}"></div>
+        <div class="col-3" th:text="${todo.title}"></div>
         <div class="col-1" th:text="${todo.isDone}"></div>
         <div class="col-1" th:text="${todo.isUrgent}"></div>
         <div class="col-1" > <a th:href="@{${todo.id}/delete}" >X</a></div>
