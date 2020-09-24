@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new Todo</title>
+</head>
+<body>
+<h1>Add new todo</h1>
+<form action="/todo/add" method="post" >
+    <label for="todo">Todo:</label>
+    <input id="todo" name="todo" type="text"><br>
+    <label for="urgent">Urgent</label>
+    <input type="radio" id="urgent" name="relevance" value="true" required><br>
+    <label for="lowPriority">Low Priority</label>
+    <input type="radio" id="lowPriority" name="relevance" value="false">
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
