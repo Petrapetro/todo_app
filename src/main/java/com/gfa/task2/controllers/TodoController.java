@@ -39,6 +39,16 @@ public class TodoController {
         return "todolist";
     }
 
+    @GetMapping(path = "/completedTodos")
+    public String listCompletedTodos(Model model) {
+        List<Todo> todoList = todoService.getTodos();
+        List<Todo> todoListSelected = todoList.stream()
+                .filter(x -> x.isIsDone() == true)
+                .collect(Collectors.toList());
+        model.addAttribute("todos", todoListSelected);
+        return "todolist";
+    }
+
     @GetMapping(path = "/?isActive")
     public String listActiveTodos(Model model, @RequestParam(name = "isActive") boolean isActive) {
         List<Todo> todoList = todoService.getTodos();
@@ -68,8 +78,13 @@ public class TodoController {
         return "redirect:/todo/";
     }
 
-    @PostMapping(path="{todo.id}/delete")
-    public String deleteTodo(@PathVariable(name="todo.id") long id) {
+    @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
+    public String deleteTodoGet(@PathVariable("id") long id) {
+        return "redirect:/todo/" + id + "/delete";
+    }
+
+    @RequestMapping(value="/{id}/delete", method = RequestMethod.POST)
+    public String deleteTodo(@PathVariable("id") long id) {
         todoService.deleteTodo(id);
         return "redirect:/todo/";
     }

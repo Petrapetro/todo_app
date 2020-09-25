@@ -6,16 +6,38 @@
     <meta charset="UTF-8">
     <title>Todo List</title>
     <style>
-        body {
-            margin-top: 2em;
-        }
-
         .hover:hover {
             background: lightblue;
         }
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/todo/">Todos</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/todo/">Show all</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/todo/activeTodos">Active Todos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/todo/completedTodos">Completed Todos</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
 <div class="container">
     <div class="row justify-content-center">
         <h1>Todos for today:</h1>
@@ -30,14 +52,18 @@
 
         </div>
         <div class="row justify-content-center hover" th:each="todo : ${todos}">
-            <div class="col-sm-1" th:text="${todo.id}"></div>
+            <div class="col-sm-1" th:text="${todo.id}" th:name="'id'"></div>
             <div class="col-sm-6" th:text="${todo.title}"></div>
             <div class="col-sm-1" th:text="${todo.isDone}"></div>
             <div class="col-sm-1" th:text="${todo.isUrgent}"></div>
-            <div class="col-sm-1"><a th:href="@{${todo.id}/delete}">X</a></div>
+            <div class="col-sm-1">
+                <form th:action="@{/todo/{id}/delete(id=${todo.getId()})}" method="post">
+                    <button type="submit">X</button>
+                </form>
         </div>
     </div>
-    <div class="row justify-content-center">
+</div>
+<div class="row justify-content-center">
     <a class="btn btn-warning" href="/todo/add">Add new todo!</a><br>
 </div>
 </div>
