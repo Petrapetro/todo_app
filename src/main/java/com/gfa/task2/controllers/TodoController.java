@@ -49,6 +49,16 @@ public class TodoController {
         return "todolist";
     }
 
+    @GetMapping(path = "/urgentTodos")
+    public String listUrgentTodos(Model model) {
+        List<Todo> todoList = todoService.getTodos();
+        List<Todo> todoListSelected = todoList.stream()
+                .filter(x -> x.isIsUrgent() == true)
+                .collect(Collectors.toList());
+        model.addAttribute("todos", todoListSelected);
+        return "todolist";
+    }
+
     @GetMapping(path = "/?isActive")
     public String listActiveTodos(Model model, @RequestParam(name = "isActive") boolean isActive) {
         List<Todo> todoList = todoService.getTodos();
@@ -78,15 +88,27 @@ public class TodoController {
         return "redirect:/todo/";
     }
 
-    @RequestMapping(value="/{id}/delete", method = RequestMethod.GET)
-    public String deleteTodoGet(@PathVariable("id") long id) {
-        return "redirect:/todo/" + id + "/delete";
-    }
-
     @RequestMapping(value="/{id}/delete", method = RequestMethod.POST)
     public String deleteTodo(@PathVariable("id") long id) {
         todoService.deleteTodo(id);
         return "redirect:/todo/";
     }
+
+    @RequestMapping(value="/{id}/edit", method = RequestMethod.GET)
+    public String editTodoGet(@PathVariable("id") long id, Model model) {
+        Todo todo = todoService.getTodo(id);
+        model.addAttribute("todo", todo);
+        return "edit";
+    }
+
+    @RequestMapping(value="/{id}/edit", method = RequestMethod.POST)
+    public String editTodoPost(@PathVariable("id") long id,
+                               @RequestParam(name="title") String title,
+                               @RequestParam(name="isUrgent") boolean isUrgent,
+                               @RequestParam(name="isDone") boolean isDone) {
+        todoService.editTodo(id, title, isUrgent, isDone);
+        return "redirect:/todo/";
+    }
+
 
 }

@@ -21,11 +21,23 @@ public class TodoService {
         return (List<Todo>) todoRepository.findAll();
     }
 
+    public Todo getTodo(long id) {
+        return todoRepository.findById(id);
+    }
+
     public void addTodo(String title, boolean urgent, boolean isDone) {
         todoRepository.save(new Todo(title, urgent, isDone));
     }
 
     public void deleteTodo(long id) {
         todoRepository.deleteById(id);
+    }
+
+    public void editTodo(long id, String title, boolean isUrgent, boolean isDone) {
+        Todo todo = todoRepository.findById(id);
+        todo.setTitle(title);
+        todo.setIsDone(isDone);
+        todo.setIsUrgent(isUrgent);
+        todoRepository.save(todo);
     }
 }

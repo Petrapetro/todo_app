@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <title>Edit Todo</title>
+</head>
+<body>
+<nav th:replace="navbar.html :: navbar"></nav>
+<div  class="container" style="margin-top: 2em">
+    <div>
+        <h3>Selected Todo:</h3>
+        <div th:text="${todo.title}"></div>
+        <div th:if="${todo.isUrgent}" th:text="'It is urgent.'"></div>
+        <div th:unless="${todo.isUrgent}" th:text="'It is not urgent.'"></div>
+        <div th:if="${todo.isDone}" th:text="'It is already done.'"></div>
+        <div th:unless="${todo.isDone}" th:text="'It is not done yet.'"></div><br>
+
+        <h1>Edit Todo</h1>
+        <form th:action="@{/todo/{id}/edit(id=${todo.getId()})}" method="post">
+            <label for="title">Todo:</label>
+            <input id="title" type="text" name="title" th:placeholder="${todo.title}">
+            <label for="isUrgent">Urgent</label>
+            <input type="checkbox" id="isUrgent" name="isUrgent" value="true"><br>
+            <label for="isDone">Done</label>
+            <input type="checkbox" id="isDone" name="isDone" value="true">
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</div>
+<script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+</body>
+</html>
