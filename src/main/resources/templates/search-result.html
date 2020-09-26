@@ -13,7 +13,7 @@
     <div th:if="${todos.size() == 1}" th:text="'There is 1 result for &quot;' + ${searchWord} + '&quot;.'"></div>
     <div th:if="${todos.size() > 1}" th:text="'There are ' + ${todos.size()} + ' results for &quot;' + ${searchWord} + '&quot;.'"></div>
     <div th:if="${todos.isEmpty()}" th:text="'There is no result for: &quot;' + ${searchWord} + '&quot;'"></div>
-    <ul th:each="todo : ${todos}">
+    <ul th:each="todo : ${todos}" style="margin-top: 1em">
         <li th:text="'Description: &quot;' + ${todo.title} + '&quot;   |   ID: &quot;' + ${todo.id} + '&quot;   |   Urgent: '
         + ${todo.isUrgent} + ' | Done: ' + ${todo.isDone}"></li>
     </ul>

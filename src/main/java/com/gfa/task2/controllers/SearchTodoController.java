@@ -18,17 +18,12 @@ public class SearchTodoController {
         this.todoService = todoService;
     }
 
-/*    @RequestMapping(value="/search/", method = RequestMethod.GET)
-    public String searchTodoGet(@RequestParam(value="searchWord", required = false) String searchWord, Model model) {
-        model.addAttribute("SearchWord", searchWord);
-        return "redirect:/todo/search/?searchWord=" + searchWord;
-    }*/
-
-    @RequestMapping(value="/search/", method = RequestMethod.POST)
-    public String searchTodoPost(@RequestParam(value="searchWord", required = false) String searchWord, Model model) {
+    @RequestMapping(value="/search/", method = RequestMethod.GET)
+    public String searchTodoGet(@RequestParam(value="searchWord") String searchWord, Model model) {
         List<Todo> todos = todoService.searchTodo(searchWord);
         model.addAttribute("todos", todos);
-        model.addAttribute("SearchWord", searchWord);
+        model.addAttribute("searchWord", searchWord);
         return "search-result";
     }
+
 }
