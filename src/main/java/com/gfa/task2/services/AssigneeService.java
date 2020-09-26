@@ -20,4 +20,9 @@ public class AssigneeService {
     public List<Assignee> getAssignees() {
         return assigneeRepository.findAll();
     }
+
+    public void addAssignee(String name, String email) {
+        Assignee assignee = new Assignee(null, name, email, null);
+        assigneeRepository.save(assignee);
+    }
 }

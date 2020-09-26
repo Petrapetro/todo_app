@@ -9,8 +9,9 @@
 <body>
 <nav th:replace="navbar.html :: navbar"></nav>
 <div class="container" style="margin-top: 2em">
+    <h1>Assignees:</h1>
     <ul th:each="assignee : ${assignees}">
-        <li th:text="${assignee}"></li>
+        <li th:text="${assignee.name}"></li>
     </ul>
 </div>
 <script src="/webjars/jquery/3.3.1/jquery.min.js"></script>
