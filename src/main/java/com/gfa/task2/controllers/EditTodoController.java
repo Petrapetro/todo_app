@@ -28,10 +28,16 @@ public class EditTodoController {
 
     @RequestMapping(value="/{id}/edit", method = RequestMethod.POST)
     public String editTodoPost(@PathVariable("id") long id,
-                               @RequestParam(name="title") String title,
-                               @RequestParam(name="isUrgent") boolean isUrgent,
-                               @RequestParam(name="isDone") boolean isDone) {
-        todoService.editTodo(id, title, isUrgent, isDone);
+                               @RequestParam(name="title", required = false) String title,
+                               @RequestParam(name="isUrgent", required = false) String isUrgent,
+                               @RequestParam(name="isDone", required = false) String isDone) {
+        if (isUrgent == null) {
+            isUrgent = "false";
+        }
+        if (isDone == null) {
+            isDone = "false";
+        }
+        todoService.editTodo(id, title, Boolean.valueOf(isUrgent), Boolean.valueOf(isDone));
         return "redirect:/todo/";
     }
 }
