@@ -40,4 +40,8 @@ public class TodoService {
         todo.setIsUrgent(isUrgent);
         todoRepository.save(todo);
     }
+
+    public List<Todo> searchTodo(String searchWord) {
+        return todoRepository.findByTitleContaining(searchWord);
+    }
 }
