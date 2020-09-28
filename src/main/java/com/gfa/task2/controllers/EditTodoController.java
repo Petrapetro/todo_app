@@ -50,8 +50,10 @@ public class EditTodoController {
         }
         Assignee assignee = assigneeService.getAssignee(assigneeName);
         List<Todo> todos = assignee.getTodos();
-        todos.add(todoService.getTodo(id));
-        assignee.setTodos(todos);
+        if (!todos.contains(todoService.getTodo(id))) {
+            todos.add(todoService.getTodo(id));
+            assignee.setTodos(todos);
+        }
         todoService.editTodo(id, title, Boolean.valueOf(isUrgent), Boolean.valueOf(isDone), assignee);
         return "redirect:/todo/";
     }
