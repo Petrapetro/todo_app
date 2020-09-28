@@ -1,6 +1,7 @@
 package com.gfa.task2.services;
 
 import com.gfa.task2.models.Assignee;
+import com.gfa.task2.models.Todo;
 import com.gfa.task2.repositories.AssigneeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,5 +29,16 @@ public class AssigneeService {
 
     public void deleteAssignee(long id) {
         assigneeRepository.deleteById(id);
+    }
+
+    public Assignee getAssignee(long id) {
+        return assigneeRepository.findById(id);
+    }
+
+    public void editAssignee(long id, String name, String email) {
+        Assignee assignee = assigneeRepository.findById(id);
+        assignee.setName(name);
+        assignee.setEmail(email);
+        assigneeRepository.save(assignee);
     }
 }

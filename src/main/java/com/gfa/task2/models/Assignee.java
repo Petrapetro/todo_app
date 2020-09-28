@@ -1,9 +1,7 @@
 package com.gfa.task2.models;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -24,16 +22,16 @@ public class Assignee {
     private String email;
 
     @OneToMany
-    private List<Todo> todo;
+    private List<Todo> todos;
 
     public Assignee() {
     }
 
-    public Assignee(Long id, String name, String email, List<Todo> todo) {
+    public Assignee(Long id, String name, String email, List<Todo> todos) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.todo = todo;
+        this.todos = todos;
     }
 
     public Long getId() {
@@ -60,11 +58,11 @@ public class Assignee {
         this.email = email;
     }
 
-    public List<Todo> getTodo() {
-        return todo;
+    public List<Todo> getTodos() {
+        return todos;
     }
 
-    public void setTodo(List<Todo> todo) {
-        this.todo = todo;
+    public void setTodos(List<Todo> todo) {
+        this.todos = todo;
     }
 }
