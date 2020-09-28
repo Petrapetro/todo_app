@@ -5,10 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -28,6 +25,9 @@ public class Todo {
     @Column
     private boolean isDone = false;
 
+    @ManyToOne
+    private Assignee assignee;
+
     public Todo(String title, boolean isUrgent, boolean isDone) {
         this.title = title;
         this.isUrgent = isUrgent;
@@ -35,6 +35,14 @@ public class Todo {
     }
 
     public Todo() {
+    }
+
+    public Assignee getAssignee() {
+        return assignee;
+    }
+
+    public void setAssignee(Assignee assignee) {
+        this.assignee = assignee;
     }
 
     public long getId() {
