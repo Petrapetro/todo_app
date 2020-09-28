@@ -16,20 +16,19 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="/todo/">Show all</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/todo/list/?isActive=true">Active Todos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/todo/urgentTodos">Show Urgent Todos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/todo/list/?isActive=false">Completed Todos</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/todo/add">Add new Todo</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    Todos
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/todo/">Show all</a>
+                    <a class="dropdown-item" href="/todo/urgentTodos">Urgent</a>
+                    <a class="dropdown-item" href="/todo/list/?isActive=true">Active</a>
+                    <a class="dropdown-item" href="/todo/list/?isActive=false">Completed</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="/todo/add">Add new Todo</a>
+                </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/todo/assignees/">Assignees</a>
@@ -37,7 +36,8 @@
         </ul>
         <form class="form-inline my-2 my-lg-0"
               th:action="@{/todo/search/}" method="get">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchWord">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"
+                   name="searchWord">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
