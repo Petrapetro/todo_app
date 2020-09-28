@@ -15,8 +15,9 @@
         <tr>
             <th scope="col-sm-1">#</th>
             <th scope="col-sm-1">ID</th>
-            <th scope="col-sm-4">NAME</th>
+            <th scope="col-sm-3">NAME</th>
             <th scope="col-sm-4">E-MAIL</th>
+            <th scope="col-sm-1">TODOS</th>
             <th scope="col-sm-1">EDIT</th>
             <th scope="col-sm-1">DELETE</th>
         </tr>
@@ -27,6 +28,7 @@
             <td th:text="${assignee.id}"></td>
             <td th:text="${assignee.name}"></td>
             <td th:text="${assignee.email}"></td>
+            <td th:text="${assignee.getTodos().size()}"></td>
             <td>
                 <form th:action="@{/todo/assignees/edit/{id}(id=${assignee.getId()})}" method="get">
                 <button class="btn btn-sm" type="submit"><svg width="1.5em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

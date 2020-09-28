@@ -35,6 +35,10 @@ public class AssigneeService {
         return assigneeRepository.findById(id);
     }
 
+    public Assignee getAssignee(String name) {
+        return assigneeRepository.findByName(name);
+    }
+
     public void editAssignee(long id, String name, String email) {
         Assignee assignee = assigneeRepository.findById(id);
         assignee.setName(name);

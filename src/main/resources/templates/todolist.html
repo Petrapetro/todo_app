@@ -33,7 +33,7 @@
                 <div th:if="${todo.isDone}" style="text-decoration: line-through" th:text="${todo.title}"></div>
                 <div th:unless="${todo.isDone}" th:text="${todo.title}"></div>
             </td>
-            <td th:text="${todo.assignee}"></td>
+            <td th:text="${todo.assignee.name}"></td>
             <td>
                 <div th:if="${todo.isDone}">
                     <svg width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-check" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

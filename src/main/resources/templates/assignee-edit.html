@@ -14,9 +14,10 @@
         <div th:text="${assignee.name}"></div>
         <div th:text="'ID: ' + ${assignee.id}"></div>
         <div th:text="'E-mail: ' + ${assignee.email}"></div>
+        <div th:text="'Number of Todos: ' + ${assignee.getTodos().size()}"></div>
         <div>List of Todos:</div>
-        <ul th:unless="${assignee.todos.isEmpty()}" th:each="todo : ${assignee.todos}">
-            <li th:text="${todo.title}"></li>
+        <ul th:unless="${assignee.todos.isEmpty()}" th:each="todo : ${assignee.getTodos()}">
+            <li th:text="${todo.getTitle()}"></li>
         </ul>
 
         <h1 style="margin-top: 1em">Edit Assignee</h1>

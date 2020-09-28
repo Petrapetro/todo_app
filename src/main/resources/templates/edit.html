@@ -19,12 +19,16 @@
 
         <h1>Edit Todo</h1>
         <form th:action="@{/todo/{id}/edit(id=${todo.getId()})}" method="post">
-            <label for="title">Todo:</label>
+            <label for="title">Todo: </label>
             <input id="title" type="text" name="title" th:placeholder="${todo.title}" th:value="${todo.title}">
-            <label for="isUrgent">Urgent</label>
+            <label for="isUrgent">Urgent </label>
             <input type="checkbox" id="isUrgent" name="isUrgent" value="true"><br>
-            <label for="isDone">Done</label>
-            <input type="checkbox" id="isDone" name="isDone" value="true">
+            <label for="isDone">Done </label>
+            <input type="checkbox" id="isDone" name="isDone" value="true"><br>
+            <label for="assignee">Assignee: </label><br>
+            <select id="assignee"name="assignee">
+                <option th:each="assignee : ${assignees}" th:text="${assignee.name}"></option>
+            </select><br>
             <button type="submit">Save</button>
         </form>
     </div>

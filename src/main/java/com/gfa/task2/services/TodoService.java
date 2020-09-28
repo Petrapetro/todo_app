@@ -1,5 +1,6 @@
 package com.gfa.task2.services;
 
+import com.gfa.task2.models.Assignee;
 import com.gfa.task2.models.Todo;
 import com.gfa.task2.repositories.TodoRepository;
 import org.springframework.stereotype.Service;
@@ -33,11 +34,12 @@ public class TodoService {
         todoRepository.deleteById(id);
     }
 
-    public void editTodo(long id, String title, boolean isUrgent, boolean isDone) {
+    public void editTodo(long id, String title, boolean isUrgent, boolean isDone, Assignee assignee) {
         Todo todo = todoRepository.findById(id);
         todo.setTitle(title);
         todo.setIsDone(isDone);
         todo.setIsUrgent(isUrgent);
+        todo.setAssignee(assignee);
         todoRepository.save(todo);
     }
 
