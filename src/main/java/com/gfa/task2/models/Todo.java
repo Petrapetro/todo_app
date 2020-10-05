@@ -28,10 +28,11 @@ public class Todo {
     @ManyToOne
     private Assignee assignee;
 
-    public Todo(String title, boolean isUrgent, boolean isDone) {
+    public Todo(String title, boolean isUrgent, boolean isDone, Assignee assignee) {
         this.title = title;
         this.isUrgent = isUrgent;
         this.isDone = isDone;
+        this.assignee = assignee;
     }
 
     public Todo() {

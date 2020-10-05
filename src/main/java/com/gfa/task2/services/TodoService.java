@@ -26,8 +26,8 @@ public class TodoService {
         return todoRepository.findById(id);
     }
 
-    public void addTodo(String title, boolean urgent, boolean isDone) {
-        todoRepository.save(new Todo(title, urgent, isDone));
+    public void addTodo(String title, boolean urgent, boolean isDone, Assignee assignee) {
+        todoRepository.save(new Todo(title, urgent, isDone, assignee));
     }
 
     public void deleteTodo(long id) {
@@ -40,7 +40,7 @@ public class TodoService {
         todo.setIsDone(isDone);
         todo.setIsUrgent(isUrgent);
         todo.setAssignee(assignee);
-        todoRepository.save(todo);
+         todoRepository.save(todo);
     }
 
     public List<Todo> searchTodo(String searchWord) {

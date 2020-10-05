@@ -17,6 +17,9 @@
     <input type="radio" id="urgent" name="relevance" value="true" required><br>
     <label for="lowPriority">Low Priority</label>
     <input type="radio" id="lowPriority" name="relevance" value="false"><br>
+    <select id="assignee" name="assignee">
+        <option th:each="assignee : ${assignees}" th:text="${assignee.name}" th:value="${assignee.name}"></option>
+    </select><br>
     <button type="submit">Submit</button>
 </form>
 </div>

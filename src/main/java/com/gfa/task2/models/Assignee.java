@@ -21,7 +21,7 @@ public class Assignee {
     @Column
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "assignee")
     private List<Todo> todos;
 
     public Assignee() {

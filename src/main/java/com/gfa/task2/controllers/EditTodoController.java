@@ -54,7 +54,7 @@ public class EditTodoController {
             todos.add(todoService.getTodo(id));
             assignee.setTodos(todos);
         }
-        todoService.editTodo(id, title, Boolean.valueOf(isUrgent), Boolean.valueOf(isDone), assignee);
+        todoService.editTodo(id, title, Boolean.parseBoolean(isUrgent), Boolean.parseBoolean(isDone), assignee);
         return "redirect:/todo/";
     }
 }

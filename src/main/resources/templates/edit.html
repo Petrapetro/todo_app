@@ -26,8 +26,8 @@
             <label for="isDone">Done </label>
             <input type="checkbox" id="isDone" name="isDone" value="true"><br>
             <label for="assignee">Assignee: </label><br>
-            <select id="assignee"name="assignee">
-                <option th:each="assignee : ${assignees}" th:text="${assignee.name}"></option>
+            <select id="assignee" name="assignee">
+                <option th:each="assignee : ${assignees}" th:text="${assignee.name}" th:value="${assignee.name}"></option>
             </select><br>
             <button type="submit">Save</button>
         </form>
