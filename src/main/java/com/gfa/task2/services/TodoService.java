@@ -5,6 +5,7 @@ import com.gfa.task2.models.Todo;
 import com.gfa.task2.repositories.TodoRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,6 +45,14 @@ public class TodoService {
     }
 
     public List<Todo> searchTodo(String searchWord) {
-        return todoRepository.findByTitleContaining(searchWord);
+        searchWord = searchWord.toLowerCase();
+        List<Todo> list= todoRepository.findAll();
+        List<Todo> result = list;
+        for (Todo t: list) {
+            if (!t.getTitle().toLowerCase().contains(searchWord)) {
+                result.remove(t);
+            }
+        }
+        return result;
     }
 }

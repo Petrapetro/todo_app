@@ -8,4 +8,6 @@ import java.util.List;
 public interface TodoRepository extends CrudRepository<Todo, Long> {
         Todo findById(long id);
         List<Todo> findByTitleContaining(String searchWord);
+        List<Todo> findAll();
+
 }
